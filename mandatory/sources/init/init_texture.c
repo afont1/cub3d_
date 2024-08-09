@@ -6,7 +6,7 @@
 /*   By: afont <afont@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:48:11 by afont             #+#    #+#             */
-/*   Updated: 2024/08/07 16:42:20 by afont            ###   ########.fr       */
+/*   Updated: 2024/08/09 15:24:42 by afont            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,18 @@
 void	ft_check_color_range(t_data *data, int r, int g, int b)
 {
 	if (r > 255 || g > 255 || b > 255)
+	{
+		ft_free_color(data);
 		ft_exit_before(data, "Error color range\n");
+	}
 	if (r < 0 || g < 0 || b < 0)
+	{
+		ft_free_color(data);
 		ft_exit_before(data, "Error color range\n");
+	}
 }
 
-int	ft_convert_rgb(t_data *data, char *str)
+int	ft_convert_rgb(t_data *data, char *str, char **tab_path, char *line)
 {
 	char	**tab;
 	int		r;
@@ -28,6 +34,9 @@ int	ft_convert_rgb(t_data *data, char *str)
 	int		b;
 
 	tab = ft_split(str, ',');
+	data->to_free.line = line;
+	data->to_free.tab = tab;
+	data->to_free.tab_path = tab_path;
 	ft_check_tab_color(data, tab);
 	r = ft_atoi(tab[0]);
 	g = ft_atoi(tab[1]);
@@ -55,9 +64,11 @@ void	ft_path_to_texture(t_data *data, char *line)
 		else if (!ft_strcmp(tab[i], "EA") && tab[i + 1])
 			data->all_img.east_wall.path = ft_strdup(tab[i + 1]);
 		else if (!ft_strcmp(tab[i], "F") && tab[i + 1])
-			data->all_img.floor_color = ft_convert_rgb(data, tab[i + 1]);
+			data->all_img.floor_color = ft_convert_rgb(data, tab[i + 1], tab, \
+			line);
 		else if (!ft_strcmp(tab[i], "C") && tab[i + 1])
-			data->all_img.ceiling_color = ft_convert_rgb(data, tab[i + 1]);
+			data->all_img.ceiling_color = ft_convert_rgb(data, tab[i + 1], tab, \
+			line);
 	}
 	ft_free_tab(tab);
 }
@@ -89,6 +100,7 @@ int	ft_init_texture(t_data *data, char *argv)
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		ft_exit_before(data, "Error open\n");
+	data->to_free.fd = fd;
 	while (1)
 	{
 		cpt++;

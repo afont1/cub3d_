@@ -1,8 +1,8 @@
-NO ./images/wall/pikachu.xpm
 SO ./images/wall/greystone.xpm
+NO ./images/wall/pikachu.xpm
 EA ./images/wall/purplestone.xpm
 WE ./images/wall/red.xpm
-C 0,0,120
+C 0,0,00
 F 0,120,011
 
 

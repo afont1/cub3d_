@@ -6,7 +6,7 @@
 /*   By: afont <afont@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 16:35:13 by afont             #+#    #+#             */
-/*   Updated: 2024/08/07 16:48:27 by afont            ###   ########.fr       */
+/*   Updated: 2024/08/09 15:14:05 by afont            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,18 +90,18 @@ void	ft_init_map_data(t_data *data, char *argv, int cpt)
 		ft_exit_before(data, "Error open\n");
 	data->map.tab_map = malloc(sizeof(char *) * (data->map.height + 1));
 	ft_goto_line(fd, cpt);
-	j = -1;
+	j = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (ft_check_empty(j, line))
 			break ;
 		if (line[0] != '\n')
-			ft_line_to_map(data, line, ++j);
+			ft_line_to_map(data, line, j++);
 		free(line);
 	}
 	ft_end_gnl(fd);
-	data->map.tab_map[j + 1] = NULL;
+	data->map.tab_map[j] = NULL;
 	if (!data->map.tab_map[0])
 		ft_exit_before(data, "Error empty map\n");
 }

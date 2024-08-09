@@ -6,7 +6,7 @@
 /*   By: afont <afont@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 16:23:39 by afont             #+#    #+#             */
-/*   Updated: 2024/08/01 00:17:08 by bloisel          ###   ########.fr       */
+/*   Updated: 2024/08/09 15:32:07 by afont            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_draw_map_square(t_data *data, t_img map_img, int i, int j)
 
 	y = (i - (int)data->player.x + MAP_RANGE / 2) * MAP_SQUARE_SIZE;
 	x = (j - (int)data->player.y + MAP_RANGE / 2) * MAP_SQUARE_SIZE;
-	if (data->map.tab_map[i][j] == '1')
+	if (data->map.tab_map[i][j] == '1' || data->map.tab_map[i][j] == '4')
 		ft_draw_square(map_img, x, y, MAP_WALL_COLOR);
 	else if (data->map.tab_map[i][j] == '0')
 		ft_draw_square(map_img, x, y, MAP_FLOOR_COLOR);

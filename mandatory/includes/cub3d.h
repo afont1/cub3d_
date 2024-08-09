@@ -6,7 +6,7 @@
 /*   By: afont <afont@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 09:19:52 by afont             #+#    #+#             */
-/*   Updated: 2024/08/05 10:19:25 by afont            ###   ########.fr       */
+/*   Updated: 2024/08/09 14:29:08 by afont            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int		ft_close_window(t_data *data);
 void	ft_destroy_img(t_data *data);
 void	ft_exit_map(t_data *data, char *str);
 void	ft_exit_before(t_data *data, char *str);
+void	ft_free_color(t_data *data);
 
 /*	ray	*/
 void	ft_ray(t_data *data);

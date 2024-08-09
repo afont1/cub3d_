@@ -6,7 +6,7 @@
 /*   By: afont <afont@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 08:30:22 by afont             #+#    #+#             */
-/*   Updated: 2024/06/28 08:43:43 by afont            ###   ########.fr       */
+/*   Updated: 2024/08/09 14:22:07 by afont            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_player		t_player;
 typedef struct s_all_img	t_all_img;
 typedef struct s_slope		t_slope;
 typedef struct s_ray_coord	t_ray_coord;
+typedef struct s_to_free	t_to_free;
 
 struct	s_slope
 {
@@ -81,12 +82,20 @@ struct	s_player
 	int		color;
 	int		radius;
 	int		fov;
-	double	sneak;		
 	float	fov_factor;
+	double	sneak;		
 	double	angle;
 	double	angle_step;
 	double	delta_time;
 	t_pos	pos;
+};
+
+struct	s_to_free
+{
+	int		fd;
+	char	*line;
+	char	**tab;
+	char	**tab_path;
 };
 
 struct	s_all_img
@@ -125,6 +134,7 @@ struct	s_data
 	void		*win_ptr;
 	int			keys[256];
 	double		player_angle;
+	t_to_free	to_free;
 	t_ray_coord	ray_coord;
 	t_player	player;
 	t_map		map;
