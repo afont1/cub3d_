@@ -20,7 +20,7 @@ $(OBJ_DIR)/%.o: %.c $(HEADER)
 	count=$$(find $(OBJ_DIR) -name '*.o' | wc -l); \
 	str="████████████████████"; \
 	len_str=$$((($$count * 20) / $(TOTAL_FILES) * 3)); \
-	len_space=$$((20 - $$len_str / 3)); \
+	len_space=$$(((20 - $$len_str / 3) + 1)); \
 	printf "\033[36m%.*s%*c\033[0m%% %d\r" $$len_str $$str $$len_space ' ' $$((($$count * 100) / $(TOTAL_FILES))); \
 
 $(NAME): $(OBJS) includes/cub3d.h
