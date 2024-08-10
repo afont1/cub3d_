@@ -6,7 +6,7 @@
 /*   By: afont <afont@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 09:19:52 by afont             #+#    #+#             */
-/*   Updated: 2024/08/09 14:29:08 by afont            ###   ########.fr       */
+/*   Updated: 2024/08/10 09:28:07 by afont            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ double	ft_angle_loop(double angle);
 void	ft_fusion_img(t_img *dst, t_img *src, int x, int y);
 double	ft_dist_ang(t_data *data, double player_angle, int *d, int flag);
 int		ft_get_color(t_img *img, int x, int y);
-void	ft_protect_img(void *img_ptr);
+void	ft_protect_img(t_data *data, void *img_ptr);
 int		ft_empty_line(char *line);
 int		ft_check_empty(int j, char *line);
 void	ft_end_gnl(int fd);

@@ -6,30 +6,51 @@
 /*   By: afont <afont@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:10:35 by afont             #+#    #+#             */
-/*   Updated: 2024/07/30 12:27:19 by afont            ###   ########.fr       */
+/*   Updated: 2024/08/10 10:31:57 by afont            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+void	ft_destroy_img2(t_data *data)
+{
+	if (data->all_img.seven.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.seven.img_ptr);
+	if (data->all_img.eight.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.eight.img_ptr);
+	if (data->all_img.nine.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.nine.img_ptr);
+	if (data->all_img.zero.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.zero.img_ptr);
+	if (data->all_img.west_wall.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.west_wall.img_ptr);
+	if (data->all_img.north_wall.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.north_wall.img_ptr);
+	if (data->all_img.east_wall.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.east_wall.img_ptr);
+	if (data->all_img.south_wall.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.south_wall.img_ptr);
+}
+
 void	ft_destroy_img(t_data *data)
 {
-	mlx_destroy_image(data->mlx_ptr, data->map.img.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.env_img.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.one.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.two.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.three.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.four.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.five.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.six.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.seven.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.eight.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.nine.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.zero.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.west_wall.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.north_wall.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.east_wall.img_ptr);
-	mlx_destroy_image(data->mlx_ptr, data->all_img.south_wall.img_ptr);
+	if (data->map.img.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->map.img.img_ptr);
+	if (data->all_img.env_img.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.env_img.img_ptr);
+	if (data->all_img.one.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.one.img_ptr);
+	if (data->all_img.two.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.two.img_ptr);
+	if (data->all_img.three.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.three.img_ptr);
+	if (data->all_img.four.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.four.img_ptr);
+	if (data->all_img.five.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.five.img_ptr);
+	if (data->all_img.six.img_ptr)
+		mlx_destroy_image(data->mlx_ptr, data->all_img.six.img_ptr);
+	ft_destroy_img2(data);
 }
 
 int	ft_close_window(t_data *data)
